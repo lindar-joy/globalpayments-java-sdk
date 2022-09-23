@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.heartlandpaymentsystems</groupId>
   <artifactId>globalpayments-sdk</artifactId>
-  <version>9.0.0</version>
+  <version>9.0.1-LINDAR-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>Heartland &amp; Global Payments SDK</name>
   <description>API for processing payments through Global Payments</description>
@@ -28,14 +28,14 @@
     <url>scm:git:git@github.com:globalpayments/java-sdk.git</url>
   </scm>
   <distributionManagement>
-    <repository>
-      <id>sonatype-nexus-staging</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
     <snapshotRepository>
-      <id>sonatype-nexus-snapshots</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <id>lindar-maven-repo</id>
+      <url>https://nexus.mrq.dev/content/repositories/lindar-maven-repo/</url>
     </snapshotRepository>
+    <repository>
+      <id>lindar-maven-repo-release</id>
+      <url>https://nexus.mrq.dev/content/repositories/lindar-maven-repo-release/</url>
+    </repository>
   </distributionManagement>
   <profiles>
     <profile>
@@ -67,17 +67,6 @@
                 </goals>
               </execution>
             </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.sonatype.plugins</groupId>
-            <artifactId>nexus-staging-maven-plugin</artifactId>
-            <version>1.6.3</version>
-            <extensions>true</extensions>
-            <configuration>
-              <serverId>sonatype-nexus-staging</serverId>
-              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-              <autoReleaseAfterClose>true</autoReleaseAfterClose>
-            </configuration>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>

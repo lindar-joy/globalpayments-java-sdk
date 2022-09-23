@@ -41,6 +41,7 @@ public class AuthorizationBuilder extends TransactionBuilder<Transaction> {
     private BigDecimal cashBackAmount;
     private String clerkId;
     private String clientTransactionId;
+    private String senderRef;
     private BigDecimal convenienceAmount;
     private String currency;
     private String customerId;
@@ -210,6 +211,9 @@ public class AuthorizationBuilder extends TransactionBuilder<Transaction> {
     }
     public String getClientTransactionId() {
         return clientTransactionId;
+    }
+    public String getSenderRef() {
+        return senderRef;
     }
     public String getCurrency() {
         return currency;
@@ -454,6 +458,10 @@ public class AuthorizationBuilder extends TransactionBuilder<Transaction> {
             }
         }
         else clientTransactionId = value;
+        return this;
+    }
+    public AuthorizationBuilder withSenderRef(String value) {
+        this.senderRef = value;
         return this;
     }
     public AuthorizationBuilder withCommercialRequest(boolean value) {
