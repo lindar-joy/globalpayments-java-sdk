@@ -306,6 +306,12 @@ public class GpEcomConnector extends XmlGateway implements IPaymentGateway, IRec
         }
         //</editor-fold>
 
+        //<editor-fold desc="SENDERREF">
+        if (builder.getSenderRef() != null) {
+            et.subElement(request, "senderref", builder.getSenderRef());
+        }
+        //</editor-fold>
+
         //<editor-fold desc="STORED CREDENTIAL">
         if(builder.getStoredCredential() != null) {
             Element storedCredentialElement = et.subElement(request, "storedcredential");
