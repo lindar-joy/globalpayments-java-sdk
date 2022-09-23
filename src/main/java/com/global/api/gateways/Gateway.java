@@ -137,17 +137,29 @@ public abstract class Gateway {
 
             InputStream responseStream = conn.getInputStream();
 
-            String rawResponse = getRawResponse(responseStream);
+            String rawResponse = null;
 
-            responseStream.close();
+            if (responseStream != null) {
+                rawResponse = getRawResponse(responseStream);
+                responseStream.close();
+            }
+
             if (this.enableLogging || this.requestLogger != null) {
                 if (acceptJson()) {
                     logEntry.append("--------------------------------------------------------------------------------").append(lSChar);
                     logEntry.append("Response Code: ").append(conn.getResponseCode()).append(" ").append(conn.getResponseMessage()).append(lSChar);
-                    logEntry.append("Response: ").append(toPrettyJson(rawResponse)).append(lSChar);
+                    if (rawResponse != null) {
+                        logEntry.append("Response: ").append(toPrettyJson(rawResponse)).append(lSChar);
+                    } else {
+                        logEntry.append("Response: null").append(lSChar);
+                    }
                     logEntry.append("================================================================================").append(lSChar);
                 } else {
-                    logEntry.append(rawResponse).append(lSChar);
+                    if (rawResponse != null) {
+                        logEntry.append(rawResponse).append(lSChar);
+                    } else {
+                        logEntry.append("Response: null").append(lSChar);
+                    }
                 }
 
                 outputLogging(false);
